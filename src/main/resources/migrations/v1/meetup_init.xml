@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="meetup_initialization" author="spring_meetup_paris_team">
+        <createTable tableName="meetup">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="external_id" type="bigint">
+                <constraints nullable="false"
+                             unique="true"
+                             uniqueConstraintName="meetup_unique_external_id"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

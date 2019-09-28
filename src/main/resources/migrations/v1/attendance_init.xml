@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="attendance_initialization" author="spring_meetup_paris_team">
+        <createTable tableName="attendance">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="session_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="attendance_fk_session"
+                             references="session(id)"/>
+            </column>
+            <column name="attendee_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="attendance_fk_attendee"
+                             references="attendee(id)"/>
+            </column>
+            <column name="rsvp_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="attendance_fk_rsvp"
+                             references="rsvp(id)"/>
+            </column>
+            <column name="status_id" type="bigint">
+                <!-- status known only when session is over => nullable -->
+                <constraints nullable="true"
+                             foreignKeyName="attendance_fk_status"
+                             references="status(id)"/>
+            </column>
+        </createTable>
+        <addUniqueConstraint tableName="attendance"
+                             columnNames="session_id,attendee_id"
+                             constraintName="attendance_unique_external_session_attendee"/>
+    </changeSet>
+</databaseChangeLog>

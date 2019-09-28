@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <include file="organizer_init.xml" relativeToChangelogFile="true"/>
+    <include file="meetup_init.xml" relativeToChangelogFile="true"/>
+    <include file="meetup_organizers_init.xml" relativeToChangelogFile="true"/>
+    <include file="attendee_init.xml" relativeToChangelogFile="true"/>
+    <include file="speaker_init.xml" relativeToChangelogFile="true"/>
+    <include file="session_init.xml" relativeToChangelogFile="true"/>
+    <include file="session_speakers_init.xml" relativeToChangelogFile="true"/>
+    <include file="rsvp_init.xml" relativeToChangelogFile="true"/>
+    <include file="status_init.xml" relativeToChangelogFile="true"/>
+    <include file="attendance_init.xml" relativeToChangelogFile="true"/>
+</databaseChangeLog>
